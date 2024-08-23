@@ -1,0 +1,975 @@
+/* 这是引入了一些字体 */
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  /* 当用户手动导航或者 CSSOM scrolling API 触发滚动操作时 */
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(#2b1055, #7597de);
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+}
+
+header .logo {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: uppercase;
+  /* 大写 */
+  letter-spacing: 2px;
+  /* 字符间距 */
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header ul li {
+  list-style: none;
+  margin-left: 20px;
+}
+
+header ul li a {
+  text-decoration: none;
+  padding: 6px 15px;
+  color: #fff;
+  border-radius: 20px;
+}
+
+header ul li a:hover,
+header ul li a.active {
+  background: #fff;
+  color: #2b1055;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, #1c0522, transparent);
+  z-index: 1000;
+}
+
+section img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* object-fit CSS 属性指定可替换元素（例如：<img> 或 <video>）的内容应该如何适应到其使用高度和宽度确定的框。 */
+  object-fit: cover;
+  pointer-events: none;
+}
+
+section img#moon {
+  /* mix-blend-mode CSS 属性描述了元素的内容应该与元素的直系父元素的内容和元素的背景如何混合。 */
+  mix-blend-mode: screen;
+}
+
+section img#mountains_front {
+  z-index: 10;
+}
+
+#text {
+  position: absolute;
+  right: -350px;
+  color: #fff;
+  white-space: nowrap;
+  font-size: 7.5vw;
+  z-index: 9;
+}
+
+#btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 30px;
+  border-radius: 40px;
+  background: #fff;
+  color: #2b1055;
+  font-size: 1.5em;
+  z-index: 9;
+  transform: translateY(100px);
+}
+
+.sec {
+  position: relative;
+  padding: 100px;
+  background: #1c0522;
+}
+
+.sec h2 {
+  font-size: 3.5em;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.sec p {
+  font-size: 1em;
+  color: #fff;
+}
+
+.department-desc {
+  font-size: 22px;
+  /* 增大的字体大小，使其更易于阅读 */
+  text-align: center;
+  margin-bottom: 25px;
+  /* 增加的边距以获得更好的间距 */
+  white-space: pre-line;
+  /* 确保内容中的换行符得到尊重 */
+}
+
+/* 底部区块的样式 */
+.footer {
+  /* 背景使用从蓝色到浅蓝色的线性渐变 */
+  background: linear-gradient(135deg, rgb(92, 188, 223), rgba(21, 139, 217, 0.5));
+  /* 文本颜色设为白色 */
+  color: white;
+  /* 设置底部区块的内边距 */
+  padding: 50px;
+}
+
+/* 底部数据内容的样式 */
+.footer__data {
+  /* 弹性项目的宽度设为容器的20% */
+  flex-basis: 17%;
+  /* 每个数据内容的外边距 */
+  margin: 10px;
+}
+
+/* 底部标题和副标题的样式 */
+.footer__title,
+.footer__subtitle {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  /* 设置字体加粗 */
+  font-weight: bold;
+  /* white-space: ; */
+}
+
+/* 底部描述的样式 */
+.footer__description {
+  font-size: 1.2em;
+  color: #ffffff;
+  /* 设置顶部和底部的外边距 */
+  margin: 10px 0;
+}
+
+/* 底部链接的样式 */
+.footer__link {
+  margin-bottom: 10px;
+  /* 文本颜色设为白色 */
+  color: white;
+  /* 移除链接的下划线 */
+  text-decoration: none;
+  /* 将链接显示为块级元素 */
+  display: block;
+  margin-left: 0;
+}
+
+/* 底部版权部分的样式 */
+.footer__rights {
+  margin-top: 40px;
+  /* 文本居中对齐 */
+  text-align: center;
+}
+
+/* 底部条款链接的样式 */
+.footer__terms-link {
+  /* 文本颜色设为白色 */
+  color: white;
+  /* 移除链接的下划线 */
+  text-decoration: none;
+  /* 设置左右的外边距 */
+  margin: 0 10px;
+}
+
+.footer__copy {
+  color: #ffffff;
+}
+
+/* 网格布局，用于灵活地排列内容 */
+.grid {
+  /* 使用弹性布局 */
+  display: flex;
+  /* 项目之间平均分配空间 */
+  justify-content: space-between;
+  /* 允许项目在下一行换行 */
+  flex-wrap: wrap;
+}
+
+/* 光标样式
+.img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-image: url('./images/pm.gif');
+  background-size: cover;
+} */
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  transition: 0.5s ease;
+  transform-style: preserve-3d;
+  user-select: none;
+  cursor: crosshair;
+}
+
+.container:hover {
+  transform: rotateX(45deg) rotateY(-30deg) scale(1.3);
+}
+
+.container .ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  mask: radial-gradient(#0000 var(--i),
+      #000 var(--i),
+      #000 var(--o),
+      #0000 var(--o));
+  transition: 0.3s;
+}
+
+.container .ring-1 {
+  background: conic-gradient(#0ff 100%, #0000 100%);
+  --i: 70%;
+  --o: 71%;
+}
+
+.container .ring-2 {
+  background: conic-gradient(#0ff 5%,
+      #0000 5%,
+      #0000 9%,
+      #0ff 9%,
+      #0ff 20%,
+      #0000 20%,
+      #0000 25%,
+      #0ff 25%,
+      #0ff 37%,
+      #0000 37%,
+      #0000 42%,
+      #0ff 42%,
+      #0ff 49%,
+      #0000 49%,
+      #0000 55%,
+      #0ff 55%,
+      #0ff 65%,
+      #0000 65%,
+      #0000 72%,
+      #0ff 72%,
+      #0ff 80%,
+      #0000 80%,
+      #0000 86%,
+      #0ff 86%,
+      #0ff 95%,
+      #0000 95%);
+  --i: 57%;
+  --o: 60%;
+  animation: animate 7s ease-in-out infinite alternate;
+}
+
+.container .ring-3 {
+  background: conic-gradient(#ffd000 85%, #0000 85%);
+  --i: 50%;
+  --o: 50.7%;
+  animation: animate 3s ease-in-out infinite alternate;
+}
+
+.container .ring-4 {
+  background: conic-gradient(#0000 35%,
+      #0ff 35%,
+      #0ff 40%,
+      #0000 40%,
+      #0000 67%,
+      #0ff 67%,
+      #0ff 71%,
+      #0000 71%);
+  --i: 40%;
+  --o: 44%;
+  animation: animate 4s ease-in-out infinite alternate;
+}
+
+.container .ring-5-1 {
+  background: conic-gradient(#0000 20%,
+      #0ff 20%,
+      #0ff 40%,
+      #0000 40%,
+      #0000 67%,
+      #0ff 67%,
+      #0ff 85%,
+      #0000 85%);
+  --i: 39.5%;
+  --o: 40%;
+  animation: animate 4s ease-in-out infinite alternate;
+}
+
+.container .ring-5-2 {
+  background: conic-gradient(#0000 20%,
+      #0ff 20%,
+      #0ff 40%,
+      #0000 40%,
+      #0000 67%,
+      #0ff 67%,
+      #0ff 85%,
+      #0000 85%);
+  --i: 37.5%;
+  --o: 38%;
+  animation: animate 4s ease-in-out infinite alternate;
+}
+
+.container .ring-6 {
+  background: conic-gradient(#0000 20%,
+      #0ff 20%,
+      #0ff 35%,
+      #0000 35%,
+      #0000 67%,
+      #0ff 67%,
+      #0ff 95%,
+      #0000 95%);
+  --i: 30%;
+  --o: 30.5%;
+  animation: animate 2s ease-in-out infinite alternate;
+}
+
+.container .ring-7 {
+  background: conic-gradient(#0ff 100%, #0000 100%);
+  --i: 16%;
+  --o: 17.3%;
+}
+
+.container .ring-8 {
+  background: conic-gradient(#ffd000 75%, #0000 75%);
+  --i: 10%;
+  --o: 11%;
+  animation: animate 5s ease-in-out infinite alternate;
+}
+
+.container .ring-9 {
+  background: conic-gradient(#0ff 100%, #0000 100%);
+  --i: 3%;
+  --o: 3.4%;
+}
+
+.container .ring-8,
+.container .ring-9 {
+  transform: translateZ(0);
+  /* 初始化为0，以便在:hover时产生动画效果 */
+}
+
+.container:hover .ring-2,
+.container:hover .ring-4,
+.container:hover .ring-5-1,
+.container:hover .ring-5-2 {
+  transform: translateZ(50px);
+}
+
+.container:hover .ring-8,
+.container:hover .ring-9 {
+  transform: translateZ(120px);
+}
+
+@keyframes animate {
+  to {
+    transform: rotateZ(360deg);
+    /* 使用rotateZ代替rotate */
+  }
+}
+
+/* ---------------------------- */
+.main-container {
+  display: flex;
+  background: linear-gradient(#110d17, #132752);
+  /*背景色*/
+}
+
+/* --------------------------,不同部门导航栏 */
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 100vh;
+}
+
+.bar li {
+  list-style: none;
+}
+
+.bar ul {
+  position: relative;
+  transform: skewY(-15deg);
+}
+
+.bar ul li {
+  position: relative;
+  width: 200px;
+  background: #161a2f;
+  /* 抽屉颜色 */
+  z-index: var(--z);
+  padding: 15px;
+  border-bottom: 1px solid #060e3b;
+  /* 每个抽屉直接间隙的颜色 */
+  transition: 0.5s;
+  /*过渡动画*/
+}
+
+.bar ul li:hover {
+  transform: translate(50px, 10px) scale(1.1);
+  /* scale: 放大1.1倍 */
+  background: #093a75;
+}
+
+.bar ul li a {
+  color: #999;
+  /* 文字颜色 */
+  letter-spacing: 8px;
+  text-decoration: none;
+  /* 消除文字的下滑线 */
+}
+
+.bar ul li:hover a {
+  color: #fff;
+}
+
+.bar ul li::before {
+  content: '';
+  width: 40px;
+  height: 100%;
+  background: #161a2f;
+  display: block;
+  position: absolute;
+  left: -40px;
+  top: 0;
+  transform: skewY(45deg);
+  transform-origin: right;
+  transition: 0.5s;
+}
+
+.bar ul li:hover::before {
+  background: #072e5e;
+  /* 在hover颜色上再下移一点点，加深，目的是做阴影 */
+}
+
+.bar ul li::after {
+  content: '';
+  width: 100%;
+  height: 40px;
+  background: #161a2f;
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: -40px;
+  transform: skewX(45deg);
+  transform-origin: bottom;
+  transition: 0.5s;
+}
+
+.bar ul li:hover::after {
+  background: #0a4286;
+  /* 在hover颜色上再上移一点点 */
+}
+
+.bar ul li:lasst-child::after {
+  box-shadow: -120px 120px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ----------------------------------,以下为全屏扩展卡片 */
+.mr2 {
+  margin-right: 1rem;
+}
+
+.ml2 {
+  margin-left: 1rem;
+}
+
+.article-title {
+  font-size: 2.5rem;
+  color: #999;
+  /* 标题字体颜色，下文expanded则为点击全屏的css选择器 */
+  line-height: 1;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  letter-spacing: 0.025em;
+  transition: font-size 0.45s ease-in-out, color 0.3s ease-out;
+}
+
+.header-image1 {
+  height: 220px;
+  background-image: url(images/技术3.jpg);
+  /* 这是示例图片，建议部门合照啥的 */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 3rem;
+  position: relative;
+  transition: all 0.45s ease-in-out;
+}
+
+.header-image2 {
+  height: 220px;
+  background-image: url(../images/11.jpg);
+  /* 这是示例图片，建议部门合照啥的 */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 3rem;
+  position: relative;
+  transition: all 0.45s ease-in-out;
+}
+
+.header-image3 {
+  height: 220px;
+  background-image: url(images/秘书2.jpeg);
+  /* 这是示例图片，建议部门合照啥的 */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 3rem;
+  position: relative;
+  transition: all 0.45s ease-in-out;
+}
+
+.header-image4 {
+  height: 220px;
+  background-image: url(images/宣传3.jpeg);
+  /* 这是示例图片，建议部门合照啥的 */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 3rem;
+  position: relative;
+  transition: all 0.45s ease-in-out;
+}
+
+.header-image5 {
+  height: 220px;
+  background-image: url(images/外联2.jpeg);
+  /* 这是示例图片，建议部门合照啥的 */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 3rem;
+  position: relative;
+  transition: all 0.45s ease-in-out;
+}
+
+.overlay {
+  transition: all 0.3s ease-in-out;
+  background: ;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.title-wrap {
+  transform: translateY(0);
+  transition: transform 0.45s ease-in;
+}
+
+.drop-cap {
+  font-size: 55px;
+  line-height: 28px;
+}
+
+.wrapper {
+  margin-left: 500px;
+  left: 0;
+  height: 630px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.book__cover-exerpt {
+  color: #6a6a6a;
+  /* 正文字体颜色 */
+  padding: 1rem 1.5rem;
+  line-height: 1.6;
+  text-align: center;
+  opacity: 1;
+  max-width: 370px;
+  margin: 0 auto;
+  display: block;
+  transition: all 0.25s ease-in-out;
+  z-index: 999;
+}
+
+.book__cover {
+  height: 100%;
+  width: 100%;
+  background-color: #1b223f;
+  /* 背景颜色 */
+}
+
+.book__content {
+  text-align: justify;
+  word-wrap: break-word;
+  font-size: 1.1rem;
+  opacity: 0;
+  transition: all 1.5s ease-in-out;
+  max-width: 750px;
+  margin: 0 auto 6rem;
+  padding: 0 2rem;
+  /* 正文距左侧的间距 */
+  margin-left: 50px;
+}
+
+.book__content p {
+  line-height: 1.8;
+  color: #3a3a3a;
+  margin-bottom: 2.5rem;
+}
+
+.book {
+  position: absolute;
+  overflow: hidden;
+  margin-top: -250px;
+  margin-left: 200px;
+  background: white;
+  height: 580px;
+  width: 400px;
+  /* 阴影颜色 */
+  box-shadow: 0 20px 30px -10px #2d1d98;
+  transition: all 0.5s ease-in-out;
+  z-index: 999;
+}
+
+.book:hover {
+  box-shadow: 0 6px 50px 10px #122d67;
+  /* 阴影颜色（hover状态下） */
+}
+
+.book--expanded {
+  position: relative;
+  margin-left: -200px;
+  margin-top: -50px;
+  height: 800px;
+  width: 700px;
+  overflow-y: scroll;
+  background-color: #161a2f;
+  /* 全屏状态下的背景颜色*/
+  z-index: 999;
+}
+
+.book--expanded .overlay {
+  opacity: 0.95;
+}
+
+.book--expanded .article-title {
+  color: lightslategray;
+  /* 全屏下的标题颜色，自己设置吧 */
+  font-size: 64px;
+  letter-spacing: 0.05em;
+}
+
+.book--expanded .title-wrap {
+  /* 标题上移的高度 */
+  transform: translateY(-170px);
+  color: white;
+}
+
+.book--expanded .book__cover-exerpt {
+  opacity: 0;
+}
+
+.book--expanded .book__cover {
+  height: 220px;
+  /* 全屏状态下图片占比 */
+  margin-bottom: 6rem;
+  /* 全屏状态下正文首行高度 */
+}
+
+.book--expanded .book__content {
+  opacity: 1;
+}
+
+.book--expanded .header-image {
+  height: 100%;
+  /* 全屏状态下图片与正文之间的缝隙 */
+}
+
+span {
+  /* 首行距左侧的间距，突出大字效果 */
+  margin-left: -35px;
+  /* color:     (全屏状态下第一个大字的颜色) */
+}
+
+span .fa {
+  font-size: 17px;
+  margin-left: 20px;
+}
+
+
+
+
+/* -----------------------图片CSS */
+.box {
+  position: absolute;
+  margin-top: -250px;
+  margin-left: -470px;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  z-index: 800;
+}
+
+.scroll-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 15px;
+  gap: 12px;
+  scroll-snap-type: x mandatory;
+  overflow: auto;
+}
+
+.box .item {
+  object-fit: cover;
+  width: 0;
+  flex: 0 0 100%;
+  /* 定义了滚动容器吸附位置 */
+  scroll-snap-align: start;
+  /* 定义了滚动容器是否可“越过”吸附位置 */
+  scroll-snap-stop: always;
+  border-radius: 8px;
+}
+
+
+/* 表格 */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-family: inherit;
+  gap: 10px;
+  padding-inline: 2em;
+  padding-bottom: 0.4em;
+  background-color: #171717;
+  //background-color: #0a192f;
+  border-radius: 20px;
+}
+
+.form-heading {
+  text-align: center;
+  margin: 2em;
+  color: #64ffda;
+  font-size: 1.2em;
+  background-color: transparent;
+  align-self: center;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 10px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #ccd6f6;
+  padding-inline: 1em;
+}
+
+.sendMessage-btn {
+  cursor: pointer;
+  margin-bottom: 3em;
+  padding: 1em;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #64ffda;
+  font-weight: bold;
+  outline: 1px solid #64ffda;
+  transition: all ease-in-out 0.3s;
+}
+
+.sendMessage-btn:hover {
+  transition: all ease-in-out 0.3s;
+  background-color: #64ffda;
+  color: #000;
+  cursor: pointer;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.form-card1 {
+  background-image: linear-gradient(163deg, #64ffda 0%, #64ffda 100%);
+  border-radius: 22px;
+  transition: all 0.3s;
+}
+
+.form-card1:hover {
+  box-shadow: 0px 0px 30px 1px rgba(100, 255, 218, 0.3);
+}
+
+.form-card2 {
+  border-radius: 0;
+  transition: all 0.2s;
+}
+
+.form-card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+
+
+@keyframes dance6123 {
+  to {
+    background-position: var(--width);
+  }
+}
+
+.apply-form .form-row {
+  /* 使用flex布局，使子元素可以灵活布局 */
+  display: flex;
+  /* 设置flex布局的方向为垂直列 */
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+/* 提交的表格 */
+.login-box {
+  /* 设置弹性盒子的属性,使其为块级元素 */
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(24, 20, 20, 0.987);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  border-radius: 10px;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label {
+  top: -20px;
+  left: 0;
+  color: #bdb8b8;
+  font-size: 12px;
+}
+
+.login-box form button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.login-box button:hover {
+  background: #03f40f;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03f40f,
+    0 0 25px #03f40f,
+    0 0 50px #03f40f,
+    0 0 100px #03f40f;
+}
+
+.login-box button span {
+  position: absolute;
+  display: block;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(1) {
+  bottom: 2px;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03f40f);
+  animation: btn-anim1 2s linear infinite;
+}
