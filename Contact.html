@@ -1,532 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>加入我们</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>加入我们</title>
-</head>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-  }
+    body {
+      overflow: hidden;
+    }
 
-  body {
-    overflow: hidden;
-  }
+    canvas {
+      background-color: #000;
+      width: 100vw;
+      height: 100vh;
+    }
+    .login-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      padding: 40px;
+      transform: translate(-50%, -50%);
+      background: rgba(24, 20, 20, 0.987);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+    }
+    @media (max-width: 768px) {
+      .login-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        padding: 40px;
+        transform: translate(-50%, -50%);
+        background: rgba(24, 20, 20, 0.987);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+      }
+    }
 
-  canvas {
-    background-color: #000;
-    width: 100vw;
-    height: 100vh;
-  }
+    .login-box .user-box {
+      position: relative;
+    }
 
-  .login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 500px;
-    padding: 40px;
-    transform: translate(-50%, -50%);
-    background: rgba(24, 20, 20, 0.987);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
-    border-radius: 10px;
-  }
+    .login-box .user-box input {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 10px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      outline: none;
+      background: transparent;
+    }
 
-  .login-box .user-box {
-    position: relative;
-  }
+    .login-box .user-box label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      pointer-events: none;
+      transition: 0.5s;
+    }
 
-  .login-box .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 10px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-  }
+    .login-box .user-box input:focus ~ label,
+    .login-box .user-box input:valid ~ label {
+      top: -20px;
+      left: 0;
+      color: #bdb8b8;
+      font-size: 12px;
+    }
 
-  .login-box .user-box label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-  }
+    .login-box form button {
+      position: relative;
+      display: inline-block;
+      padding: 10px 20px;
+      color: #ffffff;
+      font-size: 16px;
+      text-decoration: none;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: 0.5s;
+      margin-top: 40px;
+      letter-spacing: 4px;
+    }
 
-  .login-box .user-box input:focus~label,
-  .login-box .user-box input:valid~label {
-    top: -20px;
-    left: 0;
-    color: #bdb8b8;
-    font-size: 12px;
-  }
+    .login-box button:hover {
+      background: #03f40f;
+      color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #03f40f, 0 0 25px #03f40f, 0 0 50px #03f40f,
+        0 0 100px #03f40f;
+    }
 
+    .login-box button span {
+      position: absolute;
+      display: block;
+    }
 
-  .login-box form button {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #ffffff;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: .5s;
-    margin-top: 40px;
-    letter-spacing: 4px
-  }
+    @keyframes btn-anim1 {
+      0% {
+        left: -100%;
+      }
 
-  .login-box button:hover {
-    background: #03f40f;
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #03f40f,
-      0 0 25px #03f40f,
-      0 0 50px #03f40f,
-      0 0 100px #03f40f;
-  }
+      50%,
+      100% {
+        left: 100%;
+      }
+    }
 
-  .login-box button span {
-    position: absolute;
-    display: block;
-  }
-
-  @keyframes btn-anim1 {
-    0% {
+    .login-box a span:nth-child(1) {
+      bottom: 2px;
       left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #03f40f);
+      animation: btn-anim1 2s linear infinite;
     }
 
-    50%,
-    100% {
-      left: 100%;
-    }
-  }
+    @keyframes astronaut {
+      0% {
+        transform: rotate(0deg);
+      }
 
-  .login-box a span:nth-child(1) {
-    bottom: 2px;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #03f40f);
-    animation: btn-anim1 2s linear infinite;
-  }
-
-
-  @keyframes astronaut {
-    0% {
-      transform: rotate(0deg);
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
-    100% {
-      transform: rotate(360deg);
+    .astronaut {
+      width: 250px;
+      height: 300px;
+      position: absolute;
+      z-index: 11;
+      top: calc(100% - 150px);
+      /* 相对于页面底部减去150px */
+      left: calc(100% - 125px);
+      /* 相对于页面右侧减去125px */
+      animation: astronaut 5s linear infinite;
     }
-  }
 
-  .astronaut {
-    width: 250px;
-    height: 300px;
-    position: absolute;
-    z-index: 11;
-    top: calc(100% - 150px);
-    /* 相对于页面底部减去150px */
-    left: calc(100% - 125px);
-    /* 相对于页面右侧减去125px */
-    animation: astronaut 5s linear infinite;
-  }
+    .schoolbag {
+      width: 100px;
+      height: 150px;
+      position: absolute;
+      z-index: 1;
+      top: calc(50% - 75px);
+      left: calc(50% - 50px);
+      background-color: #94b7ca;
+      border-radius: 50px 50px 0 0 / 30px 30px 0 0;
+    }
 
-  .schoolbag {
-    width: 100px;
-    height: 150px;
-    position: absolute;
-    z-index: 1;
-    top: calc(50% - 75px);
-    left: calc(50% - 50px);
-    background-color: #94b7ca;
-    border-radius: 50px 50px 0 0 / 30px 30px 0 0;
-  }
+    .head {
+      width: 97px;
+      height: 80px;
+      position: absolute;
+      z-index: 3;
+      background: -webkit-linear-gradient(
+        left,
+        #e3e8eb 0%,
+        #e3e8eb 50%,
+        #fbfdfa 50%,
+        #fbfdfa 100%
+      );
+      border-radius: 50%;
+      top: 34px;
+      left: calc(50% - 47.5px);
+    }
 
-  .head {
-    width: 97px;
-    height: 80px;
-    position: absolute;
-    z-index: 3;
-    background: -webkit-linear-gradient(left, #e3e8eb 0%, #e3e8eb 50%, #fbfdfa 50%, #fbfdfa 100%);
-    border-radius: 50%;
-    top: 34px;
-    left: calc(50% - 47.5px);
-  }
+    .head:after {
+      content: "";
+      width: 60px;
+      height: 50px;
+      position: absolute;
+      top: calc(50% - 25px);
+      left: calc(50% - 30px);
+      background: -webkit-linear-gradient(
+        top,
+        #15aece 0%,
+        #15aece 50%,
+        #0391bf 50%,
+        #0391bf 100%
+      );
+      border-radius: 15px;
+    }
 
-  .head:after {
-    content: "";
-    width: 60px;
-    height: 50px;
-    position: absolute;
-    top: calc(50% - 25px);
-    left: calc(50% - 30px);
-    background: -webkit-linear-gradient(top, #15aece 0%, #15aece 50%, #0391bf 50%, #0391bf 100%);
-    border-radius: 15px;
-  }
+    .head:before {
+      content: "";
+      width: 12px;
+      height: 25px;
+      position: absolute;
+      top: calc(50% - 12.5px);
+      left: -4px;
+      background-color: #618095;
+      border-radius: 5px;
+      box-shadow: 92px 0px 0px #618095;
+    }
 
-  .head:before {
-    content: "";
-    width: 12px;
-    height: 25px;
-    position: absolute;
-    top: calc(50% - 12.5px);
-    left: -4px;
-    background-color: #618095;
-    border-radius: 5px;
-    box-shadow: 92px 0px 0px #618095;
-  }
+    .body {
+      width: 85px;
+      height: 100px;
+      position: absolute;
+      z-index: 2;
+      background-color: #fffbff;
+      border-radius: 40px / 20px;
+      top: 105px;
+      left: calc(50% - 41px);
+      background: -webkit-linear-gradient(
+        left,
+        #e3e8eb 0%,
+        #e3e8eb 50%,
+        #fbfdfa 50%,
+        #fbfdfa 100%
+      );
+    }
 
-  .body {
-    width: 85px;
-    height: 100px;
-    position: absolute;
-    z-index: 2;
-    background-color: #fffbff;
-    border-radius: 40px / 20px;
-    top: 105px;
-    left: calc(50% - 41px);
-    background: -webkit-linear-gradient(left, #e3e8eb 0%, #e3e8eb 50%, #fbfdfa 50%, #fbfdfa 100%);
-  }
+    .panel {
+      width: 60px;
+      height: 40px;
+      position: absolute;
+      top: 20px;
+      left: calc(50% - 30px);
+      background-color: #b7cceb;
+    }
 
-  .panel {
-    width: 60px;
-    height: 40px;
-    position: absolute;
-    top: 20px;
-    left: calc(50% - 30px);
-    background-color: #b7cceb;
-  }
+    .panel:before {
+      content: "";
+      width: 30px;
+      height: 5px;
+      position: absolute;
+      top: 9px;
+      left: 7px;
+      background-color: #fbfdfa;
+      box-shadow: 0px 9px 0px #fbfdfa, 0px 18px 0px #fbfdfa;
+    }
 
-  .panel:before {
-    content: "";
-    width: 30px;
-    height: 5px;
-    position: absolute;
-    top: 9px;
-    left: 7px;
-    background-color: #fbfdfa;
-    box-shadow: 0px 9px 0px #fbfdfa, 0px 18px 0px #fbfdfa;
-  }
+    .panel:after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      top: 9px;
+      right: 7px;
+      background-color: #fbfdfa;
+      border-radius: 50%;
+      box-shadow: 0px 14px 0px 2px #fbfdfa;
+    }
 
-  .panel:after {
-    content: "";
-    width: 8px;
-    height: 8px;
-    position: absolute;
-    top: 9px;
-    right: 7px;
-    background-color: #fbfdfa;
-    border-radius: 50%;
-    box-shadow: 0px 14px 0px 2px #fbfdfa;
-  }
+    .arm {
+      width: 80px;
+      height: 30px;
+      position: absolute;
+      top: 121px;
+      z-index: 2;
+    }
 
-  .arm {
-    width: 80px;
-    height: 30px;
-    position: absolute;
-    top: 121px;
-    z-index: 2;
-  }
+    .arm-left {
+      left: 30px;
+      background-color: #e3e8eb;
+      border-radius: 0 0 0 39px;
+    }
 
-  .arm-left {
-    left: 30px;
-    background-color: #e3e8eb;
-    border-radius: 0 0 0 39px;
-  }
+    .arm-right {
+      right: 30px;
+      background-color: #fbfdfa;
+      border-radius: 0 0 39px 0;
+    }
 
-  .arm-right {
-    right: 30px;
-    background-color: #fbfdfa;
-    border-radius: 0 0 39px 0;
-  }
+    .arm-left:before,
+    .arm-right:before {
+      content: "";
+      width: 30px;
+      height: 70px;
+      position: absolute;
+      top: -40px;
+    }
 
-  .arm-left:before,
-  .arm-right:before {
-    content: "";
-    width: 30px;
-    height: 70px;
-    position: absolute;
-    top: -40px;
-  }
+    .arm-left:before {
+      border-radius: 50px 50px 0px 120px / 50px 50px 0 110px;
+      left: 0;
+      background-color: #e3e8eb;
+    }
 
-  .arm-left:before {
-    border-radius: 50px 50px 0px 120px / 50px 50px 0 110px;
-    left: 0;
-    background-color: #e3e8eb;
-  }
+    .arm-right:before {
+      border-radius: 50px 50px 120px 0 / 50px 50px 110px 0;
+      right: 0;
+      background-color: #fbfdfa;
+    }
 
-  .arm-right:before {
-    border-radius: 50px 50px 120px 0 / 50px 50px 110px 0;
-    right: 0;
-    background-color: #fbfdfa;
-  }
+    .arm-left:after,
+    .arm-right:after {
+      content: "";
+      width: 30px;
+      height: 10px;
+      position: absolute;
+      top: -24px;
+    }
 
-  .arm-left:after,
-  .arm-right:after {
-    content: "";
-    width: 30px;
-    height: 10px;
-    position: absolute;
-    top: -24px;
-  }
+    .arm-left:after {
+      background-color: #6e91a4;
+      left: 0;
+    }
 
-  .arm-left:after {
-    background-color: #6e91a4;
-    left: 0;
-  }
+    .arm-right:after {
+      right: 0;
+      background-color: #b6d2e0;
+    }
 
-  .arm-right:after {
-    right: 0;
-    background-color: #b6d2e0;
-  }
+    .leg {
+      width: 30px;
+      height: 40px;
+      position: absolute;
+      z-index: 2;
+      bottom: 70px;
+    }
 
-  .leg {
-    width: 30px;
-    height: 40px;
-    position: absolute;
-    z-index: 2;
-    bottom: 70px;
-  }
+    .leg-left {
+      left: 76px;
+      background-color: #e3e8eb;
+      transform: rotate(20deg);
+    }
 
-  .leg-left {
-    left: 76px;
-    background-color: #e3e8eb;
-    transform: rotate(20deg);
-  }
+    .leg-right {
+      right: 73px;
+      background-color: #fbfdfa;
+      transform: rotate(-20deg);
+    }
 
-  .leg-right {
-    right: 73px;
-    background-color: #fbfdfa;
-    transform: rotate(-20deg);
-  }
+    .leg-left:before,
+    .leg-right:before {
+      content: "";
+      width: 50px;
+      height: 25px;
+      position: absolute;
+      bottom: -26px;
+    }
 
-  .leg-left:before,
-  .leg-right:before {
-    content: "";
-    width: 50px;
-    height: 25px;
-    position: absolute;
-    bottom: -26px;
-  }
+    .leg-left:before {
+      left: -20px;
+      background-color: #e3e8eb;
+      border-radius: 30px 0 0 0;
+      border-bottom: 10px solid #6d96ac;
+    }
 
-  .leg-left:before {
-    left: -20px;
-    background-color: #e3e8eb;
-    border-radius: 30px 0 0 0;
-    border-bottom: 10px solid #6d96ac;
-  }
+    .leg-right:before {
+      right: -20px;
+      background-color: #fbfdfa;
+      border-radius: 0 30px 0 0;
+      border-bottom: 10px solid #b0cfe4;
+    }
+  </style>
 
-  .leg-right:before {
-    right: -20px;
-    background-color: #fbfdfa;
-    border-radius: 0 30px 0 0;
-    border-bottom: 10px solid #b0cfe4;
-  }
-</style>
+  <body>
+    <script>
+      document
+        .querySelector(".apply-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
 
-<body>
-  <script>
-    document.querySelector('.apply-form').addEventListener('submit', async function (event) {
-      event.preventDefault();
+          const formData = {
+            student_name: document.querySelector('input[name="student-name"]')
+              .value,
+            student_id: document.querySelector('input[name="student-id"]')
+              .value,
+            major: document.querySelector('input[name="major"]').value,
+            class: document.querySelector('input[name="class"]').value,
+            gender: document.querySelector('input[name="gender"]').value,
+            department_1: document.querySelector('input[name="department-1"]')
+              .value,
+            department_2: document.querySelector('input[name="department-2"]')
+              .value,
+          };
 
-      const formData = {
-        'student_name': document.querySelector('input[name="student-name"]').value,
-        'student_id': document.querySelector('input[name="student-id"]').value,
-        'major': document.querySelector('input[name="major"]').value,
-        'class': document.querySelector('input[name="class"]').value,
-        'gender': document.querySelector('input[name="gender"]').value,
-        'department_1': document.querySelector('input[name="department-1"]').value,
-        'department_2': document.querySelector('input[name="department-2"]').value
-      };
+          try {
+            const response = await fetch("/submit", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
 
-      try {
-        const response = await fetch('/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
+            const data = await response.json();
+
+            if (data.message) {
+              alert("提交成功，期待你的加入！");
+            } else {
+              alert("提交失败，请重试！");
+            }
+          } catch (error) {
+            alert("提交失败，请重试！");
+          }
         });
-
-        const data = await response.json();
-
-        if (data.message) {
-          alert('提交成功，期待你的加入！');
-        } else {
-          alert('提交失败，请重试！');
-        }
-      } catch (error) {
-        alert('提交失败，请重试！');
-      }
-    });
-  </script>
-  <canvas></canvas>
-  <div class="login-box">
-
-    <form action="submit.php" class="apply-form" method="post">
-      <label for="student-name" style="color: #03f40f;font-size: larger;">姓名:</label>
-      <div class="user-box">
-
-        <input id="student-name" name="student_name" required oninput="checkInputs();updateButtonColor()" type="text" />
-      </div>
-      <label for="major" style="color: #03f40f;font-size: larger;">专业:</label>
-      <div class="user-box">
-
-        <input id="major" name="major" required oninput="checkInputs();updateButtonColor()" type="text" />
-      </div>
-      <label for="class" style="color: #03f40f;font-size: larger;">年级:</label>
-      <div class="user-box">
-
-        <input list="c" id="class" name="class_" required oninput="checkInputs();updateButtonColor()" type="text" />
-        <datalist id="c">
-          <option value="22级(大三)">
-          <option value="23级(大二)">
-          <option value="24级(大一)">
-        </datalist>
-      </div>
-      <label for="gender" style="color: #03f40f;font-size: larger;">性别:</label>
-      <div class="user-box">
-
-        <input list="genders" id="gender" name="gender" required oninput="checkInputs();updateButtonColor()"
-          type="text" />
-      </div>
-      <label for="telephone_number" style="color: #03f40f;font-size: larger;">手机号码:</label>
-      <div class="user-box">
-
-        <input id="telephone_number" name="telephone_number" required oninput="checkInputs();updateButtonColor()"
-          type="text" />
-      </div>
-      <label for="department-1" style="color: #03f40f;font-size: larger;">感兴趣的部门一:</label>
-      <div class="user-box">
-
-        <input list="departments" id="department-1" name="department_1" required
-          oninput="checkInputs();updateButtonColor()" type="text" />
-        <datalist id="departments">
-          <option value="技术组">
-          <option value="资源组">
-          <option value="秘书组">
-          <option value="宣传组">
-          <option value="外联组">
-        </datalist>>
-      </div>
-      <label for="department-2" style="color: #03f40f;font-size: larger;">感兴趣的部门二:</label>
-      <div class="user-box">
-
-        <input list="departments" id="department-2" name="department_2" required
-          oninput="checkInputs();updateButtonColor()" type="text" />
-      </div>
-      <center>
-        <button type="submit" value="提交" onclick="submitForm()">SEND</button>
-      </center>
-    </form>
-  </div>
-  <div data-js="astro" class="astronaut">
-    <div class="head"></div>
-    <div class="arm arm-left"></div>
-    <div class="arm arm-right"></div>
-    <div class="body">
-      <div class="panel"></div>
+    </script>
+    <canvas></canvas>
+    <div class="login-box">
+      <form action="submit.php" class="apply-form" method="post">
+        <label for="student-name" style="color: #03f40f; font-size: larger"
+          >姓名:</label
+        >
+        <div class="user-box">
+          <input
+            id="student-name"
+            name="student_name"
+            required
+            oninput="checkInputs();updateButtonColor()"
+            type="text"
+          />
+        </div>
+        <label for="major" style="color: #03f40f; font-size: larger"
+          >专业:</label
+        >
+        <div class="user-box">
+          <input
+            id="major"
+            name="major"
+            required
+            oninput="checkInputs();updateButtonColor()"
+            type="text"
+          />
+        </div>
+        <label for="class" style="color: #03f40f; font-size: larger"
+          >年级:</label
+        >
+        <div class="user-box">
+          <input
+            list="c"
+            id="class"
+            name="class_"
+            required
+            oninput="checkInputs();updateButtonColor()"
+            type="text"
+          />
+          <datalist id="c">
+            <option value="22级(大三)"></option>
+            <option value="23级(大二)"></option>
+            <option value="24级(大一)"></option>
+          </datalist>
+        </div>
+        <label for="gender" style="color: #03f40f; font-size: larger"
+          >性别:</label
+        >
+        <div class="user-box">
+          <input
+            list="genders"
+            id="gender"
+            name="gender"
+            required
+            oninput="checkInputs();updateButtonColor()"
+            type="text"
+          />
+        </div>
+        <label for="telephone_number" style="color: #03f40f; font-size: larger"
+          >手机号码:</label
+        >
+        <div class="user-box">
+          <input
+            id="telephone_number"
+            name="telephone_number"
+            required
+            oninput="checkInputs();updateButtonColor()"
+            type="text"
+          />
+        </div>
+        <label for="department-1" style="color: #03f40f; font-size: larger"
+          >感兴趣的部门一:</label
+        >
+        <div class="user-box">
+          <input
+            list="departments"
+            id="department-1"
+            name="department_1"
+            required
+            oninput="checkInputs();updateButtonColor()"
+            type="text"
+          />
+          <datalist id="departments">
+            <option value="技术组"></option>
+            <option value="资源组"></option>
+            <option value="秘书组"></option>
+            <option value="宣传组"></option>
+            <option value="外联组"></option></datalist
+          >>
+        </div>
+        <label for="department-2" style="color: #03f40f; font-size: larger"
+          >感兴趣的部门二:</label
+        >
+        <div class="user-box">
+          <input
+            list="departments"
+            id="department-2"
+            name="department_2"
+            required
+            oninput="checkInputs();updateButtonColor()"
+            type="text"
+          />
+        </div>
+        <center>
+          <button
+            type="submit"
+            value="提交"
+            onclick="submitForm()"
+            style="color: #0391bf"
+          >
+            SEND
+          </button>
+        </center>
+      </form>
     </div>
-    <div class="leg leg-left"></div>
-    <div class="leg leg-right"></div>
-    <div class="schoolbag"></div>
-  </div>
-</body>
-<script>
-
-  // Check if all inputs are filled
-  function checkInputs() {
-    if (document.querySelector('input[name="student_name"]').value &&
-      document.querySelector('input[name="major"]').value &&
-      document.querySelector('input[name="class_"]').value &&
-      document.querySelector('input[name="gender"]').value &&
-      document.querySelector('input[name="telephone_number"]').value &&
-      document.querySelector('input[name="department_1"]').value &&
-      document.querySelector('input[name="department_2"]').value) {
-      button.style.transform = 'none';
-      button.style.boxShadow = 'none';
-    }
-  }
-
-  // Add event listeners to all input fields to update the progress bar on input
-  document.querySelectorAll('input[type="text"]').forEach(input => {
-    input.addEventListener('input', () => {
-      updateButtonColor();
-      checkInputs();
-    });
-  });
-
-
-  // 要操作的画布
-  const cvs = document.querySelector('canvas');
-  // 画布上下文
-  const ctx = cvs.getContext('2d');
-
-  // 初始化画布宽高
-  function init() {
-    cvs.width = window.innerWidth * devicePixelRatio;
-    cvs.height = window.innerHeight * devicePixelRatio;
-  }
-  init();
-
-  // 根据DPR计算字体的大小（devicePixelRatio 设备像素比）
-  const fontSize = 20 * devicePixelRatio;
-  // 设置字体、字体大小（和CSS设置字体一样）
-  ctx.font = `${fontSize}px "Consolas"`;
-  // 计算总列数（fontSize相当于每列的宽度）
-  const columnCount = Math.floor(cvs.width / fontSize);
-  // 根据列数创建数组并填充为0
-  const charIndex = new Array(columnCount).fill(0);
-
-  // 绘制代码雨
-  function draw() {
-    // 加个渐隐效果
-    ctx.fillStyle = 'rgba(0,0,0,0.1)';
-    ctx.fillRect(0, 0, cvs.width, cvs.height);
-    // 设置字体颜色
-    ctx.fillStyle = '#6be445';
-    // 设置文本基线为顶部
-    ctx.textBaseline = 'top';
-    for (let i = 0; i < columnCount; i++) {
-      // 获取随机字符
-      const text = getRandomChar();
-      // 计算文字的x、y坐标
-      const x = i * fontSize;
-      const y = charIndex[i] * fontSize;
-      // 绘制文本
-      ctx.fillText(text, x, y);
-      // 超出画布归零
-      // 这里需要再加个判断，使之错开归零的时间点（Math.random()>0.99）
-      if (y > cvs.height && Math.random() > 0.99) {
-        charIndex[i] = 0;
-      } else {
-        charIndex[i]++;
+    <div data-js="astro" class="astronaut">
+      <div class="head"></div>
+      <div class="arm arm-left"></div>
+      <div class="arm arm-right"></div>
+      <div class="body">
+        <div class="panel"></div>
+      </div>
+      <div class="leg leg-left"></div>
+      <div class="leg leg-right"></div>
+      <div class="schoolbag"></div>
+    </div>
+  </body>
+  <script>
+    // Check if all inputs are filled
+    function checkInputs() {
+      if (
+        document.querySelector('input[name="student_name"]').value &&
+        document.querySelector('input[name="major"]').value &&
+        document.querySelector('input[name="class_"]').value &&
+        document.querySelector('input[name="gender"]').value &&
+        document.querySelector('input[name="telephone_number"]').value &&
+        document.querySelector('input[name="department_1"]').value &&
+        document.querySelector('input[name="department_2"]').value
+      ) {
+        button.style.transform = "none";
+        button.style.boxShadow = "none";
       }
     }
-  }
-  // 开始绘制
-  draw();
-  // 每个50毫秒绘制一次
-  setInterval(draw, 50);
 
-  // 获取随机字符
-  function getRandomChar() {
-    const str = '0123456789abcdefghijklmnopqrstuvwxyz';
-    return str[Math.floor(Math.random() * str.length)];
-  }
+    // Add event listeners to all input fields to update the progress bar on input
+    document.querySelectorAll('input[type="text"]').forEach((input) => {
+      input.addEventListener("input", () => {
+        updateButtonColor();
+        checkInputs();
+      });
+    });
 
-</script>
+    // 要操作的画布
+    const cvs = document.querySelector("canvas");
+    // 画布上下文
+    const ctx = cvs.getContext("2d");
 
+    // 初始化画布宽高
+    function init() {
+      cvs.width = window.innerWidth * devicePixelRatio;
+      cvs.height = window.innerHeight * devicePixelRatio;
+    }
+    init();
+
+    // 根据DPR计算字体的大小（devicePixelRatio 设备像素比）
+    const fontSize = 20 * devicePixelRatio;
+    // 设置字体、字体大小（和CSS设置字体一样）
+    ctx.font = `${fontSize}px "Consolas"`;
+    // 计算总列数（fontSize相当于每列的宽度）
+    const columnCount = Math.floor(cvs.width / fontSize);
+    // 根据列数创建数组并填充为0
+    const charIndex = new Array(columnCount).fill(0);
+
+    // 绘制代码雨
+    function draw() {
+      // 加个渐隐效果
+      ctx.fillStyle = "rgba(0,0,0,0.1)";
+      ctx.fillRect(0, 0, cvs.width, cvs.height);
+      // 设置字体颜色
+      ctx.fillStyle = "#6be445";
+      // 设置文本基线为顶部
+      ctx.textBaseline = "top";
+      for (let i = 0; i < columnCount; i++) {
+        // 获取随机字符
+        const text = getRandomChar();
+        // 计算文字的x、y坐标
+        const x = i * fontSize;
+        const y = charIndex[i] * fontSize;
+        // 绘制文本
+        ctx.fillText(text, x, y);
+        // 超出画布归零
+        // 这里需要再加个判断，使之错开归零的时间点（Math.random()>0.99）
+        if (y > cvs.height && Math.random() > 0.99) {
+          charIndex[i] = 0;
+        } else {
+          charIndex[i]++;
+        }
+      }
+    }
+    // 开始绘制
+    draw();
+    // 每个50毫秒绘制一次
+    setInterval(draw, 50);
+
+    // 获取随机字符
+    function getRandomChar() {
+      const str = "0123456789abcdefghijklmnopqrstuvwxyz";
+      return str[Math.floor(Math.random() * str.length)];
+    }
+  </script>
 </html>

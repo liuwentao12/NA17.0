@@ -1,19 +1,21 @@
 /* 这是引入了一些字体 */
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   /* 当用户手动导航或者 CSSOM scrolling API 触发滚动操作时 */
   scroll-behavior: smooth;
 }
 
 body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  background: linear-gradient(#2b1055, #7597de);
+  /* width: 100vw !important;
+  min-height: 100vh; */
+  /* overflow: hidden; */
+  /* overflow-x: hidden; */
+  background: linear-gradient(#110d17, #132752);
 }
 
 header {
@@ -57,8 +59,8 @@ header ul li a {
   border-radius: 20px;
 }
 
-header ul li a:hover,
-header ul li a.active {
+header ul li a:hover
+/* header ul li a.active*/ {
   background: #fff;
   color: #2b1055;
 }
@@ -75,7 +77,7 @@ section {
 }
 
 section::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -154,8 +156,16 @@ section img#mountains_front {
 
 /* 底部区块的样式 */
 .footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
   /* 背景使用从蓝色到浅蓝色的线性渐变 */
-  background: linear-gradient(135deg, rgb(92, 188, 223), rgba(21, 139, 217, 0.5));
+  background: linear-gradient(
+    135deg,
+    rgb(92, 188, 223),
+    rgba(21, 139, 217, 0.5)
+  );
   /* 文本颜色设为白色 */
   color: white;
   /* 设置底部区块的内边距 */
@@ -262,10 +272,12 @@ section img#mountains_front {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  mask: radial-gradient(#0000 var(--i),
-      #000 var(--i),
-      #000 var(--o),
-      #0000 var(--o));
+  mask: radial-gradient(
+    #0000 var(--i),
+    #000 var(--i),
+    #000 var(--o),
+    #0000 var(--o)
+  );
   transition: 0.3s;
 }
 
@@ -276,32 +288,34 @@ section img#mountains_front {
 }
 
 .container .ring-2 {
-  background: conic-gradient(#0ff 5%,
-      #0000 5%,
-      #0000 9%,
-      #0ff 9%,
-      #0ff 20%,
-      #0000 20%,
-      #0000 25%,
-      #0ff 25%,
-      #0ff 37%,
-      #0000 37%,
-      #0000 42%,
-      #0ff 42%,
-      #0ff 49%,
-      #0000 49%,
-      #0000 55%,
-      #0ff 55%,
-      #0ff 65%,
-      #0000 65%,
-      #0000 72%,
-      #0ff 72%,
-      #0ff 80%,
-      #0000 80%,
-      #0000 86%,
-      #0ff 86%,
-      #0ff 95%,
-      #0000 95%);
+  background: conic-gradient(
+    #0ff 5%,
+    #0000 5%,
+    #0000 9%,
+    #0ff 9%,
+    #0ff 20%,
+    #0000 20%,
+    #0000 25%,
+    #0ff 25%,
+    #0ff 37%,
+    #0000 37%,
+    #0000 42%,
+    #0ff 42%,
+    #0ff 49%,
+    #0000 49%,
+    #0000 55%,
+    #0ff 55%,
+    #0ff 65%,
+    #0000 65%,
+    #0000 72%,
+    #0ff 72%,
+    #0ff 80%,
+    #0000 80%,
+    #0000 86%,
+    #0ff 86%,
+    #0ff 95%,
+    #0000 95%
+  );
   --i: 57%;
   --o: 60%;
   animation: animate 7s ease-in-out infinite alternate;
@@ -315,56 +329,64 @@ section img#mountains_front {
 }
 
 .container .ring-4 {
-  background: conic-gradient(#0000 35%,
-      #0ff 35%,
-      #0ff 40%,
-      #0000 40%,
-      #0000 67%,
-      #0ff 67%,
-      #0ff 71%,
-      #0000 71%);
+  background: conic-gradient(
+    #0000 35%,
+    #0ff 35%,
+    #0ff 40%,
+    #0000 40%,
+    #0000 67%,
+    #0ff 67%,
+    #0ff 71%,
+    #0000 71%
+  );
   --i: 40%;
   --o: 44%;
   animation: animate 4s ease-in-out infinite alternate;
 }
 
 .container .ring-5-1 {
-  background: conic-gradient(#0000 20%,
-      #0ff 20%,
-      #0ff 40%,
-      #0000 40%,
-      #0000 67%,
-      #0ff 67%,
-      #0ff 85%,
-      #0000 85%);
+  background: conic-gradient(
+    #0000 20%,
+    #0ff 20%,
+    #0ff 40%,
+    #0000 40%,
+    #0000 67%,
+    #0ff 67%,
+    #0ff 85%,
+    #0000 85%
+  );
   --i: 39.5%;
   --o: 40%;
   animation: animate 4s ease-in-out infinite alternate;
 }
 
 .container .ring-5-2 {
-  background: conic-gradient(#0000 20%,
-      #0ff 20%,
-      #0ff 40%,
-      #0000 40%,
-      #0000 67%,
-      #0ff 67%,
-      #0ff 85%,
-      #0000 85%);
+  background: conic-gradient(
+    #0000 20%,
+    #0ff 20%,
+    #0ff 40%,
+    #0000 40%,
+    #0000 67%,
+    #0ff 67%,
+    #0ff 85%,
+    #0000 85%
+  );
   --i: 37.5%;
   --o: 38%;
   animation: animate 4s ease-in-out infinite alternate;
 }
 
 .container .ring-6 {
-  background: conic-gradient(#0000 20%,
-      #0ff 20%,
-      #0ff 35%,
-      #0000 35%,
-      #0000 67%,
-      #0ff 67%,
-      #0ff 95%,
-      #0000 95%);
+  background: conic-gradient(
+    #0000 20%,
+    #0ff 20%,
+    #0ff 35%,
+    #0000 35%,
+    #0000 67%,
+    #0ff 67%,
+    #0ff 95%,
+    #0000 95%
+  );
   --i: 30%;
   --o: 30.5%;
   animation: animate 2s ease-in-out infinite alternate;
@@ -416,6 +438,8 @@ section img#mountains_front {
 
 /* ---------------------------- */
 .main-container {
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   background: linear-gradient(#110d17, #132752);
   /*背景色*/
@@ -425,6 +449,7 @@ section img#mountains_front {
 .bar {
   display: flex;
   align-items: center;
+  margin-left: 7vw;
   justify-content: left;
   height: 100vh;
 }
@@ -470,7 +495,7 @@ section img#mountains_front {
 }
 
 .bar ul li::before {
-  content: '';
+  content: "";
   width: 40px;
   height: 100%;
   background: #161a2f;
@@ -489,7 +514,7 @@ section img#mountains_front {
 }
 
 .bar ul li::after {
-  content: '';
+  content: "";
   width: 100%;
   height: 40px;
   background: #161a2f;
@@ -525,7 +550,7 @@ section img#mountains_front {
   color: #999;
   /* 标题字体颜色，下文expanded则为点击全屏的css选择器 */
   line-height: 1;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   text-align: center;
   letter-spacing: 0.025em;
   transition: font-size 0.45s ease-in-out, color 0.3s ease-out;
@@ -533,7 +558,7 @@ section img#mountains_front {
 
 .header-image1 {
   height: 220px;
-  background-image: url(images/技术3.jpg);
+  background-image: url(./images/jsb3.jpg);
   /* 这是示例图片，建议部门合照啥的 */
   background-size: cover;
   background-position: center;
@@ -544,7 +569,7 @@ section img#mountains_front {
 
 .header-image2 {
   height: 220px;
-  background-image: url(../images/11.jpg);
+  background-image: url(./images/11.jpg);
   /* 这是示例图片，建议部门合照啥的 */
   background-size: cover;
   background-position: center;
@@ -555,7 +580,7 @@ section img#mountains_front {
 
 .header-image3 {
   height: 220px;
-  background-image: url(images/秘书2.jpeg);
+  background-image: url(./images/msb2.jpeg);
   /* 这是示例图片，建议部门合照啥的 */
   background-size: cover;
   background-position: center;
@@ -566,7 +591,7 @@ section img#mountains_front {
 
 .header-image4 {
   height: 220px;
-  background-image: url(images/宣传3.jpeg);
+  background-image: url(./images/xcb3.jpeg);
   /* 这是示例图片，建议部门合照啥的 */
   background-size: cover;
   background-position: center;
@@ -577,7 +602,7 @@ section img#mountains_front {
 
 .header-image5 {
   height: 220px;
-  background-image: url(images/外联2.jpeg);
+  background-image: url(./images/wlb2.jpeg);
   /* 这是示例图片，建议部门合照啥的 */
   background-size: cover;
   background-position: center;
@@ -588,7 +613,6 @@ section img#mountains_front {
 
 .overlay {
   transition: all 0.3s ease-in-out;
-  background: ;
   opacity: 0;
   position: absolute;
   top: 0;
@@ -735,10 +759,6 @@ span .fa {
   font-size: 17px;
   margin-left: 20px;
 }
-
-
-
-
 /* -----------------------图片CSS */
 .box {
   position: absolute;
@@ -771,7 +791,6 @@ span .fa {
   border-radius: 8px;
 }
 
-
 /* 表格 */
 .form {
   display: flex;
@@ -782,7 +801,6 @@ span .fa {
   padding-inline: 2em;
   padding-bottom: 0.4em;
   background-color: #171717;
-  //background-color: #0a192f;
   border-radius: 20px;
 }
 
@@ -860,7 +878,6 @@ span .fa {
   border-radius: 20px;
 }
 
-
 @keyframes dance6123 {
   to {
     background-position: var(--width);
@@ -886,7 +903,7 @@ span .fa {
   transform: translate(-50%, -50%);
   background: rgba(24, 20, 20, 0.987);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
 
@@ -914,11 +931,11 @@ span .fa {
   font-size: 16px;
   color: #fff;
   pointer-events: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.login-box .user-box input:focus~label,
-.login-box .user-box input:valid~label {
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
   color: #bdb8b8;
@@ -934,18 +951,16 @@ span .fa {
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
-  transition: .5s;
+  transition: 0.5s;
   margin-top: 40px;
-  letter-spacing: 4px
+  letter-spacing: 4px;
 }
 
 .login-box button:hover {
   background: #03f40f;
   color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px #03f40f,
-    0 0 25px #03f40f,
-    0 0 50px #03f40f,
+  box-shadow: 0 0 5px #03f40f, 0 0 25px #03f40f, 0 0 50px #03f40f,
     0 0 100px #03f40f;
 }
 
@@ -972,4 +987,102 @@ span .fa {
   height: 2px;
   background: linear-gradient(90deg, transparent, #03f40f);
   animation: btn-anim1 2s linear infinite;
+}
+
+/* 兼容移动端 */
+
+/* 
+img {
+  max-width: 100%;
+  height: auto;
+} */
+
+@media (max-width: 768px) {
+  body {
+    width: 100%;
+    /* height: 3338px; */
+    background: linear-gradient(#110d17, #132752);
+  }
+
+  /* 在小于 768px 的屏幕上应用的样式 */
+  header {
+    width: 100%;
+    /* width: 414px; */
+    font-size: 12px;
+    background-color: #c5c6c9 !important;
+    padding: 8px;
+  }
+
+  header a {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 10px;
+  }
+
+  section {
+    width: 100%;
+  }
+
+  section .container {
+    position: fixed;
+    width: 300px !important;
+    height: 300px;
+  }
+
+  .sec {
+    font-size: 12px;
+  }
+
+  .main-container {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    /* height:; */
+  }
+
+  .main-container .bar {
+    width: 100px;
+    height: 100px;
+    margin-left: 102px;
+    margin-top: 160px;
+  }
+
+  .main-container .box {
+    width: 300px;
+    margin-top: -250px;
+    margin-left: -595px;
+  }
+
+  .main-container .box .scroll-container img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .main-container .wrapper {
+    width: 300px !important;
+    height: 200px;
+  }
+
+  .scroll-container {
+    width: 274px;
+    height: 200px;
+    margin-right: 100px;
+
+    /* margin-left: 102px; */
+  }
+
+  .book {
+    width: 300px;
+    /* display: none; */
+    margin-left: -614px;
+    margin-top: 50px;
+    margin-bottom: 200px;
+  }
+
+  .footer {
+    margin-top: 300px;
+  }
 }
